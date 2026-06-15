@@ -21,47 +21,44 @@ function SkillSet() {
   const sectionRef = useRef(null);
   const [target, setTarget] = useState({ x: 0, y: 0, active: false });
   const [positions, setPositions] = useState(
-    skills.map(function () {
-      return { x: 0, y: 0 };
-    })
+    skills.map(() => ({ x: 0, y: 0 }))
   );
 
-  useEffect(function () {
-    function setCenter() {
-      if (!sectionRef.current) {
-        return;
-      }
+  function getIconTargetPosition() {
+    if (!sectionRef.current) return { x: 0, y: 0 };
 
-      const rect = sectionRef.current.getBoundingClientRect();
-      const cx = rect.width / 2;
-      const cy = rect.height / 2;
+    const rect = sectionRef.current.getBoundingClientRect();
+
+    return {
+      x: rect.width * 0.67,
+      y: rect.height * 0.50,
+  };
+  }
+
+  useEffect(() => {
+    function setRightPosition() {
+      const iconPosition = getIconTargetPosition();
 
       setTarget({
-        x: cx,
-        y: cy,
+        x: iconPosition.x,
+        y: iconPosition.y,
         active: false,
       });
 
-      setPositions(
-        skills.map(function () {
-          return { x: cx, y: cy };
-        })
-      );
+      setPositions(skills.map(() => iconPosition));
     }
 
-    setCenter();
-    window.addEventListener("resize", setCenter);
+    setRightPosition();
+    window.addEventListener("resize", setRightPosition);
 
-    return function () {
-      window.removeEventListener("resize", setCenter);
+    return () => {
+      window.removeEventListener("resize", setRightPosition);
     };
   }, []);
 
-  useEffect(function () {
+  useEffect(() => {
     const node = sectionRef.current;
-    if (!node) {
-      return;
-    }
+    if (!node) return;
 
     function handleMove(e) {
       const rect = node.getBoundingClientRect();
@@ -74,11 +71,11 @@ function SkillSet() {
     }
 
     function handleLeave() {
-      const rect = node.getBoundingClientRect();
+      const iconPosition = getIconTargetPosition();
 
       setTarget({
-        x: rect.width / 2,
-        y: rect.height / 2,
+        x: iconPosition.x,
+        y: iconPosition.y,
         active: false,
       });
     }
@@ -86,26 +83,23 @@ function SkillSet() {
     node.addEventListener("mousemove", handleMove);
     node.addEventListener("mouseleave", handleLeave);
 
-    return function () {
+    return () => {
       node.removeEventListener("mousemove", handleMove);
       node.removeEventListener("mouseleave", handleLeave);
     };
   }, []);
 
-  useEffect(function () {
+  useEffect(() => {
     let frameId;
 
     function animate() {
-      setPositions(function (prev) {
-        if (!prev.length) {
-          return prev;
-        }
+      setPositions((prev) => {
+        if (!prev.length) return prev;
 
-        const next = prev.map(function (item) {
-          return { x: item.x, y: item.y };
-        });
+        const next = prev.map((item) => ({ x: item.x, y: item.y }));
 
         const leaderEase = target.active ? 0.22 : 0.1;
+
         next[0].x = next[0].x + (target.x - next[0].x) * leaderEase;
         next[0].y = next[0].y + (target.y - next[0].y) * leaderEase;
 
@@ -123,7 +117,7 @@ function SkillSet() {
 
     frameId = requestAnimationFrame(animate);
 
-    return function () {
+    return () => {
       cancelAnimationFrame(frameId);
     };
   }, [target]);
@@ -132,15 +126,17 @@ function SkillSet() {
     <section id="skills" className="skills-snake-section" ref={sectionRef}>
       <div className="skills-snake-bg"></div>
 
-      <div className="skills-snake-center">
-        <h2 className="skills-snake-title">
-          Always Building.
-          <br />
-          Always Growing.
-        </h2>
+      <div className="skills-snake-content">
+        <div className="skills-snake-text">
+          <h2 className="skills-snake-title">
+            Always Building.
+            <br />
+            Always Growing.
+          </h2>
+        </div>
       </div>
 
-      {skills.map(function (image, index) {
+      {skills.map((image, index) => {
         const pos = positions[index] || { x: 0, y: 0 };
         const sizeClass = index === 0 ? "leader" : "";
         const spread = target.active ? index * 16 : 0;
@@ -162,7 +158,12 @@ function SkillSet() {
                 scale +
                 ")",
               zIndex: skills.length - index,
-              opacity: index === 0 ? 1 : target.active ? 1 : Math.max(0.18, 1 - index * 0.07),
+              opacity:
+                index === 0
+                  ? 1
+                  : target.active
+                  ? 1
+                  : Math.max(0.18, 1 - index * 0.07),
             }}
           >
             <img src={image} alt="" />
