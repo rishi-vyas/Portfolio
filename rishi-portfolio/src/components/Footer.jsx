@@ -4,7 +4,7 @@ function Footer() {
   return (
     <div id="contact" style={footerWrapper}>
       <div style={footerContainer}>
-        <a href="https://linkedin.com/rishikesh-vyas" target="_blank" rel="noreferrer" style={linkStyle}>
+        <a href="https://linkedin.com/in/rishikesh-vyas" target="_blank" rel="noreferrer" style={linkStyle}>
           LinkedIn
         </a>
         <a href="https://github.com/rishi-vyas" target="_blank" rel="noreferrer" style={linkStyle}>
