@@ -82,7 +82,7 @@ function IntroComponent() {
           </p>
 
           <div className="avi-hero-actions">
-            <a href="#socials" className="avi-btn avi-btn-dark">
+            <a href="#contact" className="avi-btn avi-btn-dark">
               Connect
             </a>
 

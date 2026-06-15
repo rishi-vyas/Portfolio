@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div style={footerWrapper}>
+    <div id="contact" style={footerWrapper}>
       <div style={footerContainer}>
         <a href="https://linkedin.com/rishikesh-vyas" target="_blank" rel="noreferrer" style={linkStyle}>
           LinkedIn
