@@ -36,7 +36,7 @@ function MyExperience() {
   }}
 >
   <span style={{ color: "#d97706" }}>Destructuring</span>{" "}
-  <span style={{ color: "#111" }}>My Work Experience:</span>
+  <span style={{ color: "#111" }}>My Lastest Work Experience:</span>
 </h2>
 
         {/* Main Content */}
@@ -90,18 +90,28 @@ function MyExperience() {
 
               <ul style={listStyle}>
                 <li>
-                  Engineered and deployed an automated wafer processing system
-                  with dynamic animation features, improving performance
-                  efficiency by 31%.
+                  Engineered scalable software solutions that streamlined complex business workflows, driving a 31% improvement in operational efficiency.
                 </li>
                 <li>
-                  Designed Auto-Teaching UI reducing training cost by $950K annually.
+                  Built and optimized high-performance systems supporting over 2 million users, delivering an 87% improvement in responsiveness and user experience reducing training cost by $950K annually.
                 </li>
                 <li>
-                  Enhanced UI services across 2,000+ users, boosting productivity by 87%.
+                  Developed data-driven platforms and intelligent workflow solutions that enabled seamless integration, automation, and operational insights across enterprise environments.
                 </li>
                 <li>
-                  Collaborated with R&D to streamline UI automation pipelines.
+                  Applied analytics, automation, and AI-inspired methodologies to solve complex engineering challenges and improve business outcomes.
+                </li>
+                 <li>
+                  Enhanced system scalability, reliability, and maintainability through architectural improvements and continuous performance optimization.
+                </li>
+                <li>
+                  Delivered software solutions for globally recognized organizations including Google, Samsung, NVIDIA, and TSMC, contributing to mission-critical systems within the semiconductor and technology ecosystem.
+                </li>
+                <li>
+                  Contributed to the development of AI-driven and data-centric initiatives by integrating analytics, automation, and decision-support capabilities into enterprise applications.
+                </li>
+                <li>
+                  Led performance optimization efforts that improved scalability, maintainability, and long-term reliability of production systems operating at enterprise scale.
                 </li>
               </ul>
             </div>
