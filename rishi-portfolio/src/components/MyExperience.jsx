@@ -105,32 +105,6 @@ function MyExperience() {
                 </li>
               </ul>
             </div>
-
-            {/* Deshik Labs */}
-            <div>
-              <h3 style={titleStyle}>Deshik Labs</h3>
-              <p style={subStyle}>Sep 2022 - Feb 2023</p>
-              <p style={roleStyle}>Software Development Engineer</p>
-
-              <ul style={listStyle}>
-                <li>
-                  Contributed to building scalable application features and improving performance.
-                </li>
-              </ul>
-            </div>
-
-            {/* Amphisoft */}
-            <div>
-              <h3 style={titleStyle}>Amphisoft Technologies Pvt. Ltd</h3>
-              <p style={subStyle}>March 2022 - August 2022</p>
-              <p style={roleStyle}>Web Developer Intern</p>
-
-              <ul style={listStyle}>
-                <li>
-                  Improved UI responsiveness and frontend performance.
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>
